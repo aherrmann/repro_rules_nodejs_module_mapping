@@ -1,0 +1,9 @@
+{
+  "devDependencies": {
+    "@bazel/bazel": "^2.1.0",
+    "@bazel/hide-bazel-files": "^1.6.0",
+    "@bazel/typescript": "^1.6.0",
+    "jest": "^25.3.0",
+    "typescript": "^3.8.3"
+  }
+}

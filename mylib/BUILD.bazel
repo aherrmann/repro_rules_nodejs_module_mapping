@@ -1,0 +1,10 @@
+load("//:defs_1_1.bzl", "my_ts_library")
+#load("//:defs_1_6.bzl", "my_ts_library")
+
+my_ts_library(
+    name = "mylib",
+    module_name = "@my/lib",
+    tsconfig = "tsconfig.json",
+    srcs = ["index.ts"],
+    visibility = ["//visibility:public"],
+)
