@@ -1,0 +1,23 @@
+load("//:defs_1_1.bzl", "my_ts_library")
+#load("//:defs_1_6.bzl", "my_ts_library")
+
+# With defs_1_1 & rules_nodejs 1.1.0
+#
+#     [link_node_modules.js] module manifest: workspace repro, bin bazel-out/k8-fastbuild/bin, root npm/node_modules with first-party packages
+#      { repro: [ 'bin', 'repro' ], '@my/lib': [ 'bin', 'repro/mylib' ] }
+#     [link_node_modules.js] found legacy_external_runfiles, switching root to external/npm/node_modules
+#     [link_node_modules.js] resolved root npm/node_modules to external/npm/node_modules
+#     [link_node_modules.js] cwd /.../execroot/repro
+#     [link_node_modules.js] symlink( node_modules -> external/npm/node_modules )
+#     [link_node_modules.js] mapping hierarchy [{"name":"@my/lib","link":["bin","repro/mylib"]},{"name":"repro","link":["bin","repro"]}]
+#     [link_node_modules.js] symlink( repro -> /.../repro/bazel-out/k8-fastbuild/bin )
+#     [link_node_modules.js] mkdir( @my )
+#     [link_node_modules.js] symlink( @my/lib -> /.../execroot/repro/bazel-out/k8-fastbuild/bin/mylib )
+
+my_ts_library(
+    name = "uselib",
+    tsconfig = "tsconfig.json",
+    srcs = ["uselib.ts"],
+    deps = ["//mylib:mylib"],
+    visibility = ["//visibility:public"],
+)
