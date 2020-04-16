@@ -1,5 +1,5 @@
-load("//:defs_1_1.bzl", "my_ts_library")
-#load("//:defs_1_6.bzl", "my_ts_library")
+#load("//:defs_1_1.bzl", "my_ts_library")
+load("//:defs_1_6.bzl", "my_ts_library")
 
 # With defs_1_1 & rules_nodejs 1.1.0
 #
@@ -16,6 +16,17 @@ load("//:defs_1_1.bzl", "my_ts_library")
 
 # With defs_1_1 & rules_nodejs 1.6.0
 #
+#     uselib.ts(1,21): error TS2307: Cannot find module '@my/lib'.
+
+# With defs_1_6 & rules_nodejs 1.6.0
+#
+#     ======== Resolving module '@my/lib' from '/.../execroot/repro/uselib.ts'. ========
+#     Module resolution kind is not specified, using 'NodeJs'.
+#     Loading module '@my/lib' from 'node_modules' folder, target file type 'TypeScript'.
+#     ...
+#     Loading module '@my/lib' from 'node_modules' folder, target file type 'JavaScript'.
+#     ...
+#     ======== Module name '@my/lib' was not resolved. ========
 #     uselib.ts(1,21): error TS2307: Cannot find module '@my/lib'.
 
 my_ts_library(

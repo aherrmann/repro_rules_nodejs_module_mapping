@@ -1,5 +1,5 @@
-load("//:defs_1_1.bzl", "my_ts_library")
-#load("//:defs_1_6.bzl", "my_ts_library")
+#load("//:defs_1_1.bzl", "my_ts_library")
+load("//:defs_1_6.bzl", "my_ts_library")
 
 my_ts_library(
     name = "mylib",
