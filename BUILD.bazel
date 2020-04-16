@@ -14,6 +14,10 @@ load("//:defs_1_1.bzl", "my_ts_library")
 #     [link_node_modules.js] mkdir( @my )
 #     [link_node_modules.js] symlink( @my/lib -> /.../execroot/repro/bazel-out/k8-fastbuild/bin/mylib )
 
+# With defs_1_1 & rules_nodejs 1.6.0
+#
+#     uselib.ts(1,21): error TS2307: Cannot find module '@my/lib'.
+
 my_ts_library(
     name = "uselib",
     tsconfig = "tsconfig.json",
