@@ -1,9 +1,24 @@
+load(
+    "@build_bazel_rules_nodejs//:providers.bzl",
+    "LinkablePackageInfo",
+)
 load("@npm//typescript:index.bzl", "tsc")
+
+def _paths_join(*paths):
+    return "/".join([p for p in paths if p])
 
 def _my_ts_library_impl(ctx):
     tsc = ctx.attr.tsc
     return [
         tsc[DefaultInfo],
+        LinkablePackageInfo(
+            package_name = ctx.attr.module_name,
+            path = _paths_join(
+                ctx.bin_dir.path,
+                ctx.label.workspace_root,
+                ctx.label.package,
+            ),
+        ),
     ]
 
 _my_ts_library = rule(
